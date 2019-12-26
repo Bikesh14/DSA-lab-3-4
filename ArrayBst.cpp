@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # include<iostream>
 using namespace std;
 
@@ -35,3 +36,19 @@ void ArrayBst:: add(int data)
 }
 
 
+=======
+# ifndef 
+# include<iostream>
+using namespace std;
+
+class ArrayBST : public BinarySearchTree
+{
+private: 
+	int elemets[16];
+public:
+	void preorderTraversal();
+	void add(int data);
+	bool search (int date);
+			
+}
+>>>>>>> 4fb8d3a67351533f76d602325fd681e24c3452b1
