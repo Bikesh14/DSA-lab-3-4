@@ -2,12 +2,12 @@
 #include "ArrayBst.h"
 
 BinaryT::BinaryT(){
-    std::cout<<"Tree initiated\n";
+    std::cout<<"Tree created\n";
 }
 
 void BinaryT::addToIndex(int indexToAdd,Node* node)
 {
-    datas[indexToAdd] = node;
+    elements[indexToAdd] = node;
 }
 
 void BinaryT::add(int data)
@@ -23,7 +23,7 @@ void BinaryT::add(int data)
         addToIndex(indexToAdd,node);
     }else
     {
-        Node* root = datas[1];
+        Node* root = elements[1];
         insert(root, node, root->key);
     }
 
@@ -32,7 +32,7 @@ void BinaryT::add(int data)
 
 bool BinaryT::isEmpty()
 {
-    return (this->datas[1] == NULL);
+    return (this->elements[1] == NULL);
 }
 
 void BinaryT::insert(Node* root, Node* node, int key)
@@ -40,20 +40,20 @@ void BinaryT::insert(Node* root, Node* node, int key)
     if(root == NULL)
     {
         node->key = key;
-        datas[key] = node;
+        elements[key] = node;
     }
     else if(root->data > node->data)
     {
         //add to left
         int leftKey = getLeftChildIndex(root->key);
-        Node* left = datas[leftKey];
+        Node* left = elements[leftKey];
         insert(left,node,leftKey);
     }
     else
     {
         //add to right
         int rightKey = getRightChildIndex(root->key);
-        Node* right = datas[rightKey];
+        Node* right = elements[rightKey];
         insert(right,node,rightKey);
     }
 }
@@ -63,7 +63,7 @@ void BinaryT::traverse(Traverse trav)
 {
     std::cout<<"****\n";
     if(isEmpty()) throw "Tree is empty";
-    Node* root = datas[1];
+    Node* root = elements[1];
     if(trav == LVR)
     {
         traverseLVR(root);
@@ -85,12 +85,12 @@ void BinaryT::traverseLVR(Node* root)
     if(root != NULL)
     {
         
-        Node* left = datas[getLeftChildIndex(root->key)];
+        Node* left = elements[getLeftChildIndex(root->key)];
         traverseLVR(left);
         
         std::cout << root->key <<" ";
 
-        Node* right = datas[getRightChildIndex(root->key)];
+        Node* right = elements[getRightChildIndex(root->key)];
         traverseLVR(right);
     } 
 }
@@ -102,10 +102,10 @@ void BinaryT::traverseVLR(Node* root)
     {
         std::cout << root->data <<" ";
         
-        Node* left = datas[getLeftChildIndex(root->key)];
+        Node* left = elements[getLeftChildIndex(root->key)];
         traverseVLR(left);
         
-        Node* right = datas[getRightChildIndex(root->key)];
+        Node* right = elements[getRightChildIndex(root->key)];
         traverseVLR(right);
     } 
 }
@@ -116,10 +116,10 @@ void BinaryT::traverseLRV(Node* root)
     if(root != NULL)
     {
         
-        Node* left = datas[getLeftChildIndex(root->key)];
+        Node* left = elements[getLeftChildIndex(root->key)];
         traverseLRV(left);
         
-        Node* right = datas[getRightChildIndex(root->key)];
+        Node* right = elements[getRightChildIndex(root->key)];
         traverseLRV(right);
 
         std::cout << root->data <<" ";
@@ -130,7 +130,7 @@ void BinaryT::traverseLRV(Node* root)
 int BinaryT::size()
 {
     if(isEmpty()) return 0;
-    Node* root = datas[1];
+    Node* root = elements[1];
     return size(root); 
 }
 
@@ -138,8 +138,8 @@ int BinaryT::size()
 int BinaryT::size(Node* root)
 {
     if(root == NULL) return 0;
-    Node* left = datas[getLeftChildIndex(root->key)];
-    Node* right = datas[getRightChildIndex(root->key)];
+    Node* left = elements[getLeftChildIndex(root->key)];
+    Node* right = elements[getRightChildIndex(root->key)];
     return size(left) + size(right) + 1; 
 }
 
@@ -159,7 +159,7 @@ int BinaryT::getLeftChildIndex(int key)
 bool BinaryT::dataExists(int data)
 {
     if(isEmpty()) return false;
-    Node* root = datas[1];
+    Node* root = elements[1];
     return findInNode(root, data);
 }
 
@@ -168,10 +168,10 @@ bool BinaryT::findInNode(Node* root, int data)
     if(root == NULL)return false;
     if(root->data == data)return true;
     if(root->data > data){
-        Node* left = datas[getLeftChildIndex(root->key)];
+        Node* left = elements[getLeftChildIndex(root->key)];
         return findInNode(left,data);
     }else{
-        Node* right = datas[getRightChildIndex(root->key)];
+        Node* right = elements[getRightChildIndex(root->key)];
         return findInNode(right,data);
     }
 }
@@ -179,7 +179,7 @@ bool BinaryT::findInNode(Node* root, int data)
 int BinaryT::find(int data)
 {
     if(isEmpty()) return 0;
-    Node* root = datas[1];
+    Node* root = elements[1];
     return findRootInNode(root, data);
 }
 
@@ -188,10 +188,10 @@ int BinaryT::findRootInNode(Node* root,int data)
     if(root == NULL)return 0;
     if(root->data == data)return root->key;
     if(root->data > data){
-        Node* left = datas[getLeftChildIndex(root->key)];
+        Node* left = elements[getLeftChildIndex(root->key)];
         return findRootInNode(left,data);
     }else{
-        Node* right = datas[getRightChildIndex(root->key)];
+        Node* right = elements[getRightChildIndex(root->key)];
         return findRootInNode(right,data);
     }
 }
@@ -205,7 +205,7 @@ void BinaryT::remove(int data)
         std::cout<<"Data not found";
     }else{
         //recursively shift the data and remove the node :D
-        Node* root = datas[keyToBeRemoved];
+        Node* root = elements[keyToBeRemoved];
         shiftChildToRoot(root);   
     }
 
@@ -213,8 +213,8 @@ void BinaryT::remove(int data)
 
 void BinaryT::shiftChildToRoot(Node* root)
 {
-    Node* left = datas[getLeftChildIndex(root->key)];
-    Node* right = datas[getRightChildIndex(root->key)];
+    Node* left = elements[getLeftChildIndex(root->key)];
+    Node* right = elements[getRightChildIndex(root->key)];
     
 
     if(left == NULL && right == NULL){
