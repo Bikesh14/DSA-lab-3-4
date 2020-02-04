@@ -97,25 +97,25 @@ int ArrayBST::max()
 }
 	
 int main(){
-	ArrayBST a;
-	a.add(1);
-	a.add(9);
-	a.add(21);
-	a.add(70);
-	a.add(46);
-	a.add(33);
-	a.add(21);
-	a.add(28);
+	ArrayBST t;
+	t.add(1);
+	t.add(9);
+	t.add(21);
+	t.add(70);
+	t.add(46);
+	t.add(33);
+	t.add(21);
+	t.add(28);
 	for(int i=0;i<MAX_SIZE;i++){
-		cout<<a.elements[i]<<",";
+		cout<<t.elements[i]<<",";
 	}
 	cout<<endl;
-	a.preorderTraversal();
+	t.preorderTraversal();
 	cout<<endl;
-	a.search(33);
-	a.search(29);
+	t.search(33);
+	t.search(29);
 	int b;
-	b=a.max();
+	b=t.max();
 	cout<<b;
 	return 0;
 }
