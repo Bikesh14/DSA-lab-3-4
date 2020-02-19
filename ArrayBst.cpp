@@ -1,14 +1,12 @@
 #include<iostream>
 using namespace std;
 #include "ArrayBST.h"
-
 ArrayBST::ArrayBST(){
 	for(int i=0;i<MAX_SIZE;i++){
 		this->elements[i]=0;
 	}	
 }
 ArrayBST::~ArrayBST(){}
-
 void ArrayBST::add(int data){
 	if(this->elements[1]==0){
 		elements[1]=data;
@@ -52,37 +50,84 @@ void ArrayBST::preorderTraversal(){
 	int j=0;						//For visited parent node
 	int k=0;						//For visited left node
 	int l=0;						//For visited right node
-	while(i<MAX_SIZE && i>0){
-		if(j!=1){
+	while(i<MAX_SIZE && i>0)
+	{
+		if(j!=1)
+		{
 			cout<<this->elements[i]<<" ";
 			k=0;
 			l=0;
 		}
-		if(2*i<MAX_SIZE && this->elements[2*i]!=0 && k!=1){
+		if(2*i<MAX_SIZE && this->elements[2*i]!=0 && k!=1)
+		{
 			i=2*i;
 			j=0;
 			l=0;
 		}
-		else if (2*i+1<MAX_SIZE && this->elements[2*i+1]!=0 && l!=1){
+		else if (2*i+1<MAX_SIZE && this->elements[2*i+1]!=0 && l!=1)
+		{
 			i=2*i+1;
 			j=0;
 			k=0;
 		}
-		else{
-			if(i%2!=0){					//Check if right node is visited.
+		else
+		{
+			if(i%2!=0)
+			{					//Check if right node is visited.
 				l=1;
 			}
-			else{
+			else
+			{
 				l=0;
 			}
 			i=int(i/2);
 			j=1;
 			k=1;
 		}	
-		}	
+		}	 
 	}
 	
-
-
+int ArrayBST::max()
+{
+	for(int i=1;i<MAX_SIZE;)
+	{
+		if(this->elements[2*i+1]!=0)
+		{
+			i=2*i+1;
+		}
+		else
+		{
+			return elements[i];
+		}
+		
+	}
+	
+}
+	
+int ArrayBST::min()
+{
+	
+}
+void ArrayBST::remove(int data)
+{
+}
+void ArrayBST::inorder(int x)
+{
+	
+	int l=2*x;
+	int r=2*x+1;
+	if(this->elements[l]!=0)
+	{
+		inorder( l);
+	}
+	cout<<(this->elements[x])<<" ";
+	
+	if(this->elements[r]!=0)
+	{
+		inorder( r);
+	}
+	
+		
+}
 
 
