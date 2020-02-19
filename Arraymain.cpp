@@ -1,45 +1,27 @@
-#include<iostream>
-#include "ArrayBst.h"
+#include <iostream>
+using namespace std;
+#include "ArrayBST.cpp"
+
+
+
 int main(){
-    BinaryT a;
-
-    //Adding the data
-
-    a.add(10);
-    a.add(0);
-    a.add(12);
-    a.add(14);
-    a.add(2);
-    a.add(7);
-
-    std::cout<<"\nSize is "<<a.size()<<" \n";
-    std::cout<<"Pre order traversal"<<std::endl;
-    a.traverse(VLR);
-    std::cout<<std::endl;
-    
-    std::cout<<"In order traversal"<<std::endl;
-    a.traverse(LVR);
-    std::cout<<std::endl;
-    
-    std::cout<<"Post order traversal"<<std::endl;
-    a.traverse(LRV);
-    std::cout<<std::endl;
- 
-    std::cout<<"Does 2 exists ?"<<std::endl;
-    if(a.dataExists(2)){
-        std::cout<<"Yes\n";
-    }else{
-        std::cout<<"Nope\n";
-    }
-    std::cout<<std::endl;
-
-    std::cout<<"Remove 0"<<std::endl;
-    a.remove(0);
-    std::cout<<std::endl;
-
-    std::cout<<"In order traversal again"<<std::endl;
-    a.traverse(LVR);
-    std::cout<<"\nAll done";
-
-    return 0;
+	ArrayBST a;
+	a.add(1);
+	a.add(9);
+	a.add(21);
+	a.add(7);
+	a.add(46);
+	a.add(33);
+	a.add(21);
+	a.add(28);
+	cout<<"[";
+	for(int i=0;i<MAX_SIZE;i++){
+		cout<<a.elements[i]<<",";
+	}
+	cout<<"]"<<endl;
+	a.preorderTraversal();
+	cout<<endl;
+	a.search(33);
+	a.search(29);
+	return 0;
 }

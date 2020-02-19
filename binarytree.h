@@ -4,8 +4,8 @@
  class BinarySearchTree{
 	private:
 	public:
-		virtual void preordertraversal()=0;
+		virtual void preorderTraversal()=0;
 		virtual void add(int data)=0;
-		void bool search(int data)=0;
+		virtual bool search(int data)=0;
 };
 #endif
