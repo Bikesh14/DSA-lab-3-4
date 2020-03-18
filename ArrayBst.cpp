@@ -45,47 +45,22 @@ bool ArrayBST::search(int data){
 	cout<<"Required number "<<data<<"  is not found in the tree\n";
 	return false;
 }
-void ArrayBST::preorderTraversal(){
-	int i=1;
-	int j=0;						//For visited parent node
-	int k=0;						//For visited left node
-	int l=0;						//For visited right node
-	while(i<MAX_SIZE && i>0)
+void ArrayBST::preorder(){
+	int l=2*x;
+	int r=2*x+1;
+	
+	cout<<(this->elements[x])<<" ";
+	if(this->elements[l]!=0)
 	{
-		if(j!=1)
-		{
-			cout<<this->elements[i]<<" ";
-			k=0;
-			l=0;
-		}
-		if(2*i<MAX_SIZE && this->elements[2*i]!=0 && k!=1)
-		{
-			i=2*i;
-			j=0;
-			l=0;
-		}
-		else if (2*i+1<MAX_SIZE && this->elements[2*i+1]!=0 && l!=1)
-		{
-			i=2*i+1;
-			j=0;
-			k=0;
-		}
-		else
-		{
-			if(i%2!=0)
-			{					//Check if right node is visited.
-				l=1;
-			}
-			else
-			{
-				l=0;
-			}
-			i=int(i/2);
-			j=1;
-			k=1;
-		}	
-		}	 
+		preorder( l);
 	}
+	
+	if(this->elements[r]!=0)
+	{
+		preorder( r);
+	}
+	
+}		
 	
 int ArrayBST::max()
 {
