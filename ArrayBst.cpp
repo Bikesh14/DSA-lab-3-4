@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include "ArrayBST.h"
+#include "ArrayBst.h"
 ArrayBST::ArrayBST(){
 	for(int i=0;i<MAX_SIZE;i++){
 		this->elements[i]=0;
