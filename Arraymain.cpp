@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include "ArrayBST.h"
+#include "ArrayBst.h"
 
 
 int main(){
