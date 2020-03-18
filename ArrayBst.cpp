@@ -45,7 +45,7 @@ bool ArrayBST::search(int data){
 	cout<<"Required number "<<data<<"  is not found in the tree\n";
 	return false;
 }
-void ArrayBST::preorder(){
+void ArrayBST::preorder(int x){
 	int l=2*x;
 	int r=2*x+1;
 	
