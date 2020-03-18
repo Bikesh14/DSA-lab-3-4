@@ -8,7 +8,7 @@ class ArrayBST : public BinarySearchTree
         int elements[MAX_SIZE];
         ArrayBST();
         ~ArrayBST();
-        void preorderTraversal();
+        void preorder(int x);
         void add(int data);
         bool search(int data);
         int max();
